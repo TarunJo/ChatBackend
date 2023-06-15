@@ -45,7 +45,7 @@ const connect = async () => {
 
 const io = socket(server,{
     cors: {
-        origin: "https://chat-frontend-ruddy.vercel.app/login",
+        origin: "*",
         credentials: true,
     },
 });
