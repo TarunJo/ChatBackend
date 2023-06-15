@@ -16,6 +16,10 @@ app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoute);
 
+app.get("/", (req, res) => {
+    res.send("Backend working");
+});
+
 //mongoose connection
 // mongoose.connect(process.env.MONGO_URL, {
 //     useNewUrlParser: true,
