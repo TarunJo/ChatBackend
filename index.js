@@ -6,6 +6,8 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
 const socket = require("socket.io");
+// Set strictQuery to false
+mongoose.set('strictQuery', false);
 
 dotenv.config();
 app.use(cors());
@@ -15,14 +17,25 @@ app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoute);
 
 //mongoose connection
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    }).then(() => {
-        console.log("DB Connection Successful!")
-    }).catch((err) => console.log(err));
+// mongoose.connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//     }).then(() => {
+//         console.log("DB Connection Successful!")
+//     }).catch((err) => console.log(err));
 
- const server = app.listen(process.env.PORT, ()=>{
+const connect = async () => {
+    try{
+        mongoose.connect(process.env.MONGO_URL);
+        console.log("DB Connection Successful!");
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+ const server = app.listen(process.env.PORT, async ()=>{
+    await connect();
     console.log(`Server started on Port ${process.env.PORT}`);
 });
 
