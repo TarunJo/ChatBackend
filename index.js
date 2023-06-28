@@ -7,18 +7,16 @@ const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
 const socket = require("socket.io");
 const cors = require("cors");
-// Set strictQuery to false
-
-// const corsOptions = {
-//     origin: 'https://chat-frontend-ruddy.vercel.app' 
-//   };
 
 
+const corsOptions = {
+    origin: 'https://chat-frontend-ruddy.vercel.app' 
+  };
 
 mongoose.set('strictQuery', false);
 
 dotenv.config();
-app.use(cors());
+app.use(cors(origin));
 app.use(express.json());
 
 app.use("/api/auth", userRoutes);
