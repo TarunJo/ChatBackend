@@ -10,7 +10,7 @@ const cors = require("cors");
 // Set strictQuery to false
 
 const corsOptions = {
-    origin: 'https://chat-frontend-ruddy.vercel.app/' // Replace with your desired origin
+    origin: 'https://chat-frontend-ruddy.vercel.app' 
   };
   
 
