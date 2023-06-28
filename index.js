@@ -9,12 +9,11 @@ const socket = require("socket.io");
 const cors = require("cors");
 // Set strictQuery to false
 
-const corsOptions = {
-    origin: 'https://chat-frontend-ruddy.vercel.app' 
-  };
-  
+// const corsOptions = {
+//     origin: 'https://chat-frontend-ruddy.vercel.app' 
+//   };
 
-app.use(cors(corsOptions));
+
 
 mongoose.set('strictQuery', false);
 
