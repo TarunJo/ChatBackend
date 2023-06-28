@@ -8,6 +8,15 @@ const messageRoute = require("./routes/messagesRoute");
 const socket = require("socket.io");
 const cors = require("cors");
 
+app.options('*', (req, res) => {
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', 'https://chat-frontend-ruddy.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+    // Respond with a 200 status for preflight requests
+    res.sendStatus(200);
+  });  
 
 const corsOptions = {
     origin: 'https://chat-frontend-ruddy.vercel.app' 
