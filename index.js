@@ -6,7 +6,11 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const messageRoute = require("./routes/messagesRoute");
 const socket = require("socket.io");
+const cors = require("cors");
 // Set strictQuery to false
+
+app.use(cors());
+
 mongoose.set('strictQuery', false);
 
 dotenv.config();
